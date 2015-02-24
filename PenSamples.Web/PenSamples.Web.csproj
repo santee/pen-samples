@@ -160,6 +160,7 @@
     </Content>
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <None Include="Views\Secrets\Details.cshtml" />
     <None Include="Views\Secrets\List.cshtml" />
     <None Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
