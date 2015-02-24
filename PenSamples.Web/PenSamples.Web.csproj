@@ -102,7 +102,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +128,6 @@
     </Compile>
     <Compile Include="Data\User.cs">
       <DependentUpon>PenContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SecretModel.cs" />
     <Compile Include="Models\SecretsListModel.cs" />
