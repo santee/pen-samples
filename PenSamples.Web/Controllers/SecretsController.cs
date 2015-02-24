@@ -38,7 +38,6 @@
         // GET: Secrets/1
         public async Task<ActionResult> Details(int secretId)
         {
-            var username = User.Identity.Name;
             //NOTE: We do not check user
             using (var entities = new PenEntities())
             {
@@ -56,6 +55,34 @@
                                          User = secret.User.Name
                                      });
             }
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return this.View(new SecretModel());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(SecretModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            using (var entities = new PenEntities())
+            {
+                var user = await entities.Users.FirstOrDefaultAsync(x => x.Name == User.Identity.Name);
+                user.Secrets.Add(new Secret()
+                                     {
+                                         Description = model.Description,
+                                         Text = model.Text
+                                     });
+                await entities.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List");
         }
     }
 }
