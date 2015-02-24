@@ -57,6 +57,8 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -104,6 +106,27 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SecretsController.cs" />
+    <Compile Include="Data\PenContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PenContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PenContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PenContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PenContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PenContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Secret.cs">
+      <DependentUpon>PenContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\User.cs">
+      <DependentUpon>PenContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -114,6 +137,23 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <EntityDeploy Include="Data\PenContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PenContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\PenContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PenContext.edmx</DependentUpon>
+      <LastGenOutput>PenContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\PenContext.edmx.diagram">
+      <DependentUpon>PenContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\PenContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PenContext.edmx</DependentUpon>
+      <LastGenOutput>PenContext.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -123,9 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Secrets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
