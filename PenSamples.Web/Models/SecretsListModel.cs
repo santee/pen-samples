@@ -6,6 +6,8 @@
     {
         public string User { get; set; }
 
+        public string Filter { get; set; }
+
         public IEnumerable<SecretModel> Secrets { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace PenSamples.Web.Controllers
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -14,23 +15,37 @@
     public class SecretsController : Controller
     {
         // GET: Secrets
-        public async Task<ActionResult> List()
+        public async Task<ActionResult> List(string filter = "")
         {
             var username = User.Identity.Name;
 
+            var query = @"SELECT s.SecretId as SecretId, Description, Text, Name as [User] FROM Users u
+                          JOIN Secrets s ON s.UserId = u.UserId
+                          WHERE Name = '{0}'";
+
+            var completeQuery = string.Format(query, username);
+
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                completeQuery += string.Format(" AND Description LIKE '{0}'", filter);
+            }
+
             using (var entities = new PenEntities())
             {
-                var secrets = await entities
-                    .Users
-                    .Where(x => x.Name == username)
-                    .SelectMany(x => x.Secrets)
-                    .Select(x => new SecretModel() { SecretId = x.SecretId, Description = x.Description, Text = x.Text, User = x.User.Name })
-                    .ToListAsync();
+                var secrets = await entities.Database.SqlQuery<SecretModel>(completeQuery).ToListAsync();
+
+            //    var secrets = await entities
+            //        .Users
+            //        .Where(x => x.Name == username)
+            //        .SelectMany(x => x.Secrets)
+            //        .Select(x => new SecretModel() { SecretId = x.SecretId, Description = x.Description, Text = x.Text, User = x.User.Name })
+            //        .ToListAsync();
 
                 return View(new SecretsListModel()
                                 {
                                     User = username,
-                                    Secrets = secrets
+                                    Secrets = secrets,
+                                    Filter = filter
                                 });
             }
         }
