@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model PenSamples.Web.Models.StatusModel
 
 @{
     ViewBag.Title = "Edit status";
@@ -7,6 +7,6 @@
 <h3>Edit your status:</h3>
 
 <form action="@Url.Action("ChangeStatus")" method="GET">
-    <input type="text" name="status"/>
+    <input type="text" name="status" value="@Model.Status"/>
     <input type="submit"/>
 </form>

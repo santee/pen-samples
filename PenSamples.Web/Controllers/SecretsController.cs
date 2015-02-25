@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
+    using System.Web.Helpers;
     using System.Web.Mvc;
 
     using PenSamples.Web.Data;
@@ -74,7 +75,7 @@
 
             using (var entities = new PenEntities())
             {
-                var user = await entities.Users.FirstOrDefaultAsync(x => x.Name == User.Identity.Name);
+                var user = await entities.Users.FirstAsync(x => x.Name == User.Identity.Name);
                 user.Secrets.Add(new Secret()
                                      {
                                          Description = model.Description,

@@ -142,6 +142,7 @@
     </Compile>
     <Compile Include="Models\SecretModel.cs" />
     <Compile Include="Models\SecretsListModel.cs" />
+    <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
