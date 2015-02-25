@@ -16,5 +16,17 @@
                                 Name = User.Identity.Name
                             });
         }
+
+        [HttpGet]
+        [ValidateInput(false)]
+        public ActionResult ChangeStatus(string status = null)
+        {
+            if (status == null)
+            {
+                return this.View();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

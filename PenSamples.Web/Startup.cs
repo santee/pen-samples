@@ -43,7 +43,7 @@ namespace PenSamples.Web
                             var userEntity = await entities.Users.FirstOrDefaultAsync(x => x.Name == username);
                             if (userEntity == null)
                             {
-                                entities.Users.Add(new User() { Name = username });
+                                entities.Users.Add(new User() { Name = username, Status = ""});
 
                                 await entities.SaveChangesAsync();
                             }

@@ -1,0 +1,12 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Edit status";
+}
+
+<h3>Edit your status:</h3>
+
+<form action="@Url.Action("ChangeStatus")" method="GET">
+    <input type="text" name="status"/>
+    <input type="submit"/>
+</form>

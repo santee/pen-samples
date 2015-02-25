@@ -23,7 +23,7 @@
                     .Users
                     .Where(x => x.Name == username)
                     .SelectMany(x => x.Secrets)
-                    .Select(x => new SecretModel() { Description = x.Description, Text = x.Text, User = x.User.Name })
+                    .Select(x => new SecretModel() { SecretId = x.SecretId, Description = x.Description, Text = x.Text, User = x.User.Name })
                     .ToListAsync();
 
                 return View(new SecretsListModel()
@@ -50,6 +50,7 @@
 
                 return this.View(new SecretModel
                                      {
+                                         SecretId = secret.SecretId,
                                          Description = secret.Description,
                                          Text = secret.Text,
                                          User = secret.User.Name

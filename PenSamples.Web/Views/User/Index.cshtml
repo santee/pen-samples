@@ -5,5 +5,5 @@
 }
 
 <p>My name is @Model.Name</p>
-<p>My raw HTML Status is: @Model.Status</p>
+<p>My current status is: <b>@Html.Raw(Model.Status)</b> @Html.ActionLink("Dare to change it?", "ChangeStatus")</p>
 <p>Want to learn more 'bout me? @Html.ActionLink("Check it out", "List", "Secrets")</p>
