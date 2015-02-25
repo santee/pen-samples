@@ -105,6 +105,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -162,8 +170,10 @@
     </Content>
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Views\Secrets\Details.cshtml" />
     <None Include="Views\Secrets\List.cshtml" />
+    <Content Include="Views\Secrets\Create.cshtml" />
     <None Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
