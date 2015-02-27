@@ -35,7 +35,8 @@
 
                 if (status == null)
                 {
-                    return this.View("ChangeStatus", new StatusModel { Status = user.Status });
+                    return this.View("ChangeStatus", 
+                        new StatusModel { Status = user.Status });
                 };
 
                 user.Status = status;

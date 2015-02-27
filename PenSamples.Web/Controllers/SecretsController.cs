@@ -27,7 +27,7 @@
 
             if (!string.IsNullOrWhiteSpace(filter))
             {
-                completeQuery += string.Format(" AND Description LIKE '{0}'", filter);
+                completeQuery += string.Format(" AND Description LIKE '%{0}%'", filter);
             }
 
             using (var entities = new PenEntities())

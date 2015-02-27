@@ -5,12 +5,14 @@
 
     public class BonusController : Controller
     {
+        private class PasswordModel
+        {
+            public string Password { get; set; }
+        }
+
         public JsonResult Get()
         {
-            dynamic obj1 = new ExpandoObject();
-            obj1.password = "qwerty";
-
-            return new JsonResult() { Data = new[] { obj1 }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { Data = new[] { new PasswordModel() { Password = "test1"} }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         public JsonResult GetAsObject()
